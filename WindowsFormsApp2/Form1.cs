@@ -12,10 +12,6 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-
-
-
-
         public Form1()
         {
             InitializeComponent();
@@ -96,22 +92,6 @@ namespace WindowsFormsApp2
 
         }
 
-
-        /// <summary>
-        /// 删除
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-            int a = dataGridView1.CurrentRow.Index;  //获得当前选中行的索引
-            dataGridView1.Rows.RemoveAt(a);
-        }
-
-
-
-
         /// <summary>
         ///修改
         /// </summary>
@@ -132,6 +112,19 @@ namespace WindowsFormsApp2
             dataGridView1.Rows[a].DefaultCellStyle.BackColor = Color.Red;  //设置某一行颜色
 
 
+        }
+
+
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            int a = dataGridView1.CurrentRow.Index;  //获得当前选中行的索引
+            dataGridView1.Rows.RemoveAt(a);
         }
 
 
@@ -175,7 +168,7 @@ namespace WindowsFormsApp2
         {
             int a = dataGridView1.CurrentRow.Index;  //获得当前选中行的索引
 
-            emp.Text = dataGridView1.Rows[a].Cells[0].Value.ToString();
+            emp.Text = dataGridView1.Rows[a].Cells[0].Value.ToString();  // 行：Rows[0]  列 ：Cells[0]  ， 下标0 开始
             name.Text = dataGridView1.Rows[a].Cells[1].Value.ToString();
             age.Text = dataGridView1.Rows[a].Cells[2].Value.ToString();
         }
