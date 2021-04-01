@@ -40,6 +40,9 @@ namespace WindowsFormsApp2
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -51,9 +54,6 @@ namespace WindowsFormsApp2
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -153,17 +153,37 @@ namespace WindowsFormsApp2
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(67, 254);
+            this.dataGridView1.Location = new System.Drawing.Point(123, 193);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(683, 226);
+            this.dataGridView1.Size = new System.Drawing.Size(535, 226);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+           
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "工号";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.HeaderText = "姓名";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.HeaderText = "年龄";
+            this.Column3.Name = "Column3";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 530);
+            this.label3.Location = new System.Drawing.Point(66, 465);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 14);
             this.label3.TabIndex = 2;
@@ -172,7 +192,7 @@ namespace WindowsFormsApp2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(310, 530);
+            this.label4.Location = new System.Drawing.Point(310, 465);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 14);
             this.label4.TabIndex = 2;
@@ -181,7 +201,7 @@ namespace WindowsFormsApp2
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(547, 530);
+            this.label5.Location = new System.Drawing.Point(547, 465);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 14);
             this.label5.TabIndex = 2;
@@ -189,7 +209,7 @@ namespace WindowsFormsApp2
             // 
             // emp
             // 
-            this.emp.Location = new System.Drawing.Point(123, 526);
+            this.emp.Location = new System.Drawing.Point(123, 461);
             this.emp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.emp.Name = "emp";
             this.emp.Size = new System.Drawing.Size(132, 23);
@@ -197,7 +217,7 @@ namespace WindowsFormsApp2
             // 
             // name
             // 
-            this.name.Location = new System.Drawing.Point(374, 526);
+            this.name.Location = new System.Drawing.Point(374, 461);
             this.name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(132, 23);
@@ -205,7 +225,7 @@ namespace WindowsFormsApp2
             // 
             // age
             // 
-            this.age.Location = new System.Drawing.Point(616, 526);
+            this.age.Location = new System.Drawing.Point(616, 461);
             this.age.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.age.Name = "age";
             this.age.Size = new System.Drawing.Size(132, 23);
@@ -213,7 +233,7 @@ namespace WindowsFormsApp2
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(64, 578);
+            this.button3.Location = new System.Drawing.Point(64, 513);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(130, 26);
@@ -224,17 +244,18 @@ namespace WindowsFormsApp2
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(202, 578);
+            this.button4.Location = new System.Drawing.Point(202, 513);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(130, 26);
             this.button4.TabIndex = 4;
             this.button4.Text = "修改";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(339, 578);
+            this.button5.Location = new System.Drawing.Point(339, 513);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(130, 26);
@@ -245,36 +266,22 @@ namespace WindowsFormsApp2
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(478, 578);
+            this.button6.Location = new System.Drawing.Point(478, 513);
             this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(130, 26);
             this.button6.TabIndex = 4;
             this.button6.Text = "计算平均年龄";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(616, 580);
+            this.textBox6.Location = new System.Drawing.Point(616, 515);
             this.textBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(132, 23);
             this.textBox6.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "工号";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "姓名";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "年龄";
-            this.Column3.Name = "Column3";
             // 
             // Form1
             // 
@@ -305,7 +312,6 @@ namespace WindowsFormsApp2
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Form1";
-         
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

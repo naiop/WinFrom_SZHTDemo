@@ -12,6 +12,10 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
+
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -25,14 +29,15 @@ namespace WindowsFormsApp2
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            string Submenu =  this.textBox1.Text.Trim();
+            string Submenu = this.textBox1.Text.Trim();
 
-            if (isnull(Submenu)) 
+            if (isnull(Submenu))
             {
-              edit.DropDownItems.Add(Submenu);
+                edit.DropDownItems.Add(Submenu);
             }
-          
+
         }
+
 
         /// <summary>
         /// 动态增加主菜单
@@ -43,10 +48,10 @@ namespace WindowsFormsApp2
         {
             string mainmenu = this.textBox2.Text.Trim();
             if (isnull(mainmenu))
-            { 
-             menuStrip1.Items.Add(mainmenu);
+            {
+                menuStrip1.Items.Add(mainmenu);
             }
-           
+
         }
 
         /// <summary>
@@ -60,25 +65,12 @@ namespace WindowsFormsApp2
 
             if (String.IsNullOrEmpty(str))
             {
-              return  Yes = false;
+                return Yes = false;
             }
 
             return Yes;
         }
 
- 
-
-        public static DataTable mdata(string emp_data ,string name_data ,int age_data)
-        {
-
-            DataTable dt = new DataTable();
-            DataSet ds = new DataSet();
-
-            dt.Rows.Add(dr);
-            ds.Tables.Add(dt);//别忘记向ds中添加table
-
-            return dt;
-        }
 
 
         /// <summary>
@@ -91,14 +83,14 @@ namespace WindowsFormsApp2
 
             string emp = this.emp.Text.Trim();
             string name = this.name.Text.Trim();
-            int  age = Convert.ToInt32(this.age.Text.Trim());
+            string age = this.age.Text.Trim();
 
-          
 
-            if (isnull(emp) || isnull(name))
+            if (isnull(emp) || isnull(name) || isnull(age))
             {
 
-              //  this.dataGridView1.DataSource = mdata(emp,name,age);
+                dataGridView1.Rows.Add(emp, name, age);
+                undo();
 
             }
 
@@ -112,7 +104,82 @@ namespace WindowsFormsApp2
         /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+
+            int a = dataGridView1.CurrentRow.Index;  //获得当前选中行的索引
+            dataGridView1.Rows.RemoveAt(a);
         }
+
+
+
+
+        /// <summary>
+        ///修改
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        /// dataGridView1.Rows[a].Cells[0].Value.ToString();  行：Rows[0] 列Cells[0]  ;下标都是0 开始
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int a = dataGridView1.CurrentRow.Index;  //获得当前选中行的索引
+
+
+            dataGridView1.Rows[a].Cells[0].Value = emp.Text.Trim();
+            dataGridView1.Rows[a].Cells[1].Value = name.Text.Trim();
+            dataGridView1.Rows[a].Cells[2].Value = age.Text.Trim();
+
+            dataGridView1.Rows[a].DefaultCellStyle.BackColor = Color.Red;  //设置某一行颜色
+
+
+        }
+
+
+
+        /// <summary>
+        /// 计算平均年龄
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button6_Click(object sender, EventArgs e)
+        {
+            double b = 0;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                b = Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value.ToString()) + b;
+                if (i == dataGridView1.Rows.Count - 2)
+                {
+                    b = b / (dataGridView1.Rows.Count - 1);
+                    textBox6.Text = Convert.ToString(b);
+                }
+            }
+
+        }
+
+
+
+        private void undo()
+        {
+
+            textBox1.Text = "";
+            textBox2.Text = "";
+
+            emp.Text = "";
+            name.Text = "";
+            age.Text = "";
+        }
+
+
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int a = dataGridView1.CurrentRow.Index;  //获得当前选中行的索引
+
+            emp.Text = dataGridView1.Rows[a].Cells[0].Value.ToString();
+            name.Text = dataGridView1.Rows[a].Cells[1].Value.ToString();
+            age.Text = dataGridView1.Rows[a].Cells[2].Value.ToString();
+        }
+
+     
     }
 }
