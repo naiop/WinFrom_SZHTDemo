@@ -177,56 +177,141 @@ namespace WindowsFormsApp2
 
 
 
-        //---------------------------  实现datagridview 分页效果
+        //---------------------------  实现datagridview 分页效果  获取dataTable拆封多个table显示
 
         /// <summary>
         ///  查询显示数据到datagridview2 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+
+        DataTable dt1 = new DataTable("a");
+        DataTable dt2 = new DataTable("b");
+        DataTable dt3 = new DataTable("c");
+        DataTable dt4 = new DataTable("d");
+
+
         private void button7_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
-            DataTable dt = new DataTable();
+           
 
 
-            dt.Columns.Add("Name");
-            dt.Columns.Add("age");
-            dt.Columns.Add("test");
-            dt.Columns.Add("CustAcct");
+            dt2.Columns.Add("Name");
+            dt2.Columns.Add("age");
+            dt2.Columns.Add("test");
+            dt2.Columns.Add("CustAcct");
+
+            dt1.Columns.Add("Name");
+            dt1.Columns.Add("age");
+            dt1.Columns.Add("test");
+            dt1.Columns.Add("CustAcct");
+
+            dt3.Columns.Add("Name");
+            dt3.Columns.Add("age");
+            dt3.Columns.Add("test");
+            dt3.Columns.Add("CustAcct");
+
+            dt4.Columns.Add("Name");
+            dt4.Columns.Add("age");
+            dt4.Columns.Add("test");
+            dt4.Columns.Add("CustAcct");
 
 
             for (int i=0; i<18; i++) 
             {
-                dt.Rows.Add(new object[] { "James Bond, LLC", 120, "Garrison Neely", "1234" });
+                dt1.Rows.Add(new object[] { "James Bond, LLC", 120, "Garrison Neely", "1234" });
      
             }
+
+
             for (int i = 0; i < 18; i++)
             {
-                dt.Rows.Add(new object[] { "two", 22, "Garrison Neely", "7890" });
+                dt2.Rows.Add(new object[] { "two", 22, "Garrison Neely", "7890" });
 
             }
+
             for (int i = 0; i < 18; i++)
             {
-                dt.Rows.Add(new object[] { "danC", 13, "nan", "4567" });
+                dt3.Rows.Add(new object[] { "danC", 13, "nan", "4567" });
 
             }
+
+
             for (int i = 0; i < 18; i++)
             {
-                dt.Rows.Add(new object[] { "jack", 44, "nv", "2468" });
+                dt4.Rows.Add(new object[] { "jack", 44, "nv", "2468" });
 
             }
-            ds.Tables.Add(dt);
+            ds.Tables.Add(dt1); 
+            int count =  dt1.Rows.Count;
 
-
-
+           
             
             this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;  //DataGridView自动调整列宽
-            int count =  dt.Rows.Count;
-
-            dataGridView2.DataSource = dt;
+            dataGridView2.DataSource = dt1;
+            if(dataGridView2.Rows!= null)
+            {
+               
+                label6.Text = "1";
+            }
 
         }
+
+    
+
+
+        /// <summary>
+        /// 减
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+            if (label6.Text == "4")
+            {
+                label6.Text = "3";
+                dataGridView2.DataSource = dt3;
+            }
+            else if (label6.Text == "3")
+            {
+                label6.Text = "2";
+                dataGridView2.DataSource = dt2;
+            }
+            else if (label6.Text == "2")
+            {
+                label6.Text = "1";
+                dataGridView2.DataSource = dt1;
+            }
+
+        }
+
+        /// <summary>
+        /// 加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (label6.Text == "1")
+            {
+                label6.Text = "2";
+                dataGridView2.DataSource = dt2;
+            }
+            else if (label6.Text == "2")
+            {
+                label6.Text = "3";
+                dataGridView2.DataSource = dt3;
+            }
+            else if (label6.Text == "3")
+            {
+                label6.Text = "4";
+                dataGridView2.DataSource = dt4;
+            }
+       
+        }
+
 
 
 

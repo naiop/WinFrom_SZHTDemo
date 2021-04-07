@@ -58,6 +58,7 @@ namespace WindowsFormsApp2
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -291,10 +292,10 @@ namespace WindowsFormsApp2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(859, 68);
+            this.dataGridView2.Location = new System.Drawing.Point(859, 40);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(440, 416);
+            this.dataGridView2.Size = new System.Drawing.Size(440, 444);
             this.dataGridView2.TabIndex = 6;
             // 
             // button7
@@ -309,27 +310,38 @@ namespace WindowsFormsApp2
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(1013, 516);
+            this.button8.Location = new System.Drawing.Point(1089, 516);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 8;
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(1144, 515);
+            this.button9.Location = new System.Drawing.Point(1199, 515);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 9;
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(991, 520);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 14);
+            this.label6.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1311, 656);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -398,6 +410,7 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label6;
     }
 }
 
