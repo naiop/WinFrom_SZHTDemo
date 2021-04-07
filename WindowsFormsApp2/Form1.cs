@@ -173,6 +173,69 @@ namespace WindowsFormsApp2
             age.Text = dataGridView1.Rows[a].Cells[2].Value.ToString();
         }
 
+
+
+
+
+        //---------------------------  实现datagridview 分页效果
+
+        /// <summary>
+        ///  查询显示数据到datagridview2 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
+
+
+            dt.Columns.Add("Name");
+            dt.Columns.Add("age");
+            dt.Columns.Add("test");
+            dt.Columns.Add("CustAcct");
+
+
+            for (int i=0; i<18; i++) 
+            {
+                dt.Rows.Add(new object[] { "James Bond, LLC", 120, "Garrison Neely", "1234" });
      
+            }
+            for (int i = 0; i < 18; i++)
+            {
+                dt.Rows.Add(new object[] { "two", 22, "Garrison Neely", "7890" });
+
+            }
+            for (int i = 0; i < 18; i++)
+            {
+                dt.Rows.Add(new object[] { "danC", 13, "nan", "4567" });
+
+            }
+            for (int i = 0; i < 18; i++)
+            {
+                dt.Rows.Add(new object[] { "jack", 44, "nv", "2468" });
+
+            }
+            ds.Tables.Add(dt);
+
+
+
+            
+            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;  //DataGridView自动调整列宽
+            int count =  dt.Rows.Count;
+
+            dataGridView2.DataSource = dt;
+
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }
