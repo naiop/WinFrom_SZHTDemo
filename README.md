@@ -4,7 +4,7 @@
 
 语言：VS (C#)
 
-![Image text](https://github.com/FYG1998/SZHTdemo/images/View.png)
+![Image](https://github.com/FYG1998/SZHTdemo/images/winfromView.png)
 
 一 菜单使用
 1.使用 C#建立一个如下面
