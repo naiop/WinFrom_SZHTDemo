@@ -252,8 +252,19 @@ namespace WindowsFormsApp2
             dataGridView2.DataSource = dt1;
             if(dataGridView2.Rows!= null)
             {
-               
+                textBox4.Text = "4";
+                textBox3.Text = "1";
                 label6.Text = "1";
+
+
+                button8.Enabled = true;
+                button9.Enabled = true;
+                label7.Enabled = true;
+                textBox3.Enabled = true;
+                textBox4.Enabled = true;
+
+
+
             }
 
         }
@@ -271,16 +282,19 @@ namespace WindowsFormsApp2
 
             if (label6.Text == "4")
             {
+                textBox3.Text = "3";
                 label6.Text = "3";
                 dataGridView2.DataSource = dt3;
             }
             else if (label6.Text == "3")
             {
+                textBox3.Text = "2";
                 label6.Text = "2";
                 dataGridView2.DataSource = dt2;
             }
             else if (label6.Text == "2")
             {
+                textBox3.Text = "1";
                 label6.Text = "1";
                 dataGridView2.DataSource = dt1;
             }
@@ -296,31 +310,71 @@ namespace WindowsFormsApp2
         {
             if (label6.Text == "1")
             {
+                textBox3.Text = "2";
                 label6.Text = "2";
                 dataGridView2.DataSource = dt2;
             }
             else if (label6.Text == "2")
             {
+                textBox3.Text = "3";
                 label6.Text = "3";
                 dataGridView2.DataSource = dt3;
             }
             else if (label6.Text == "3")
             {
+                textBox3.Text = "4";
                 label6.Text = "4";
                 dataGridView2.DataSource = dt4;
+
+
             }
        
         }
 
 
 
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar  == 13)
+            {
 
+                if (textBox3.Text != null || textBox3.Text != "")
+                {
+                    if (label3.Text == "1")
+                    {
+                        textBox3.Text = "1";
+                        label6.Text = "2";
+                        dataGridView2.DataSource = dt1;
+                    }
+                    else if (textBox3.Text == "2")
+                    {
+                        textBox3.Text = "2";
+                        label6.Text = "2";
+                        dataGridView2.DataSource = dt2;
+                    }
+                    else if (textBox3.Text == "3")
+                    {
+                        textBox3.Text = "3";
+                        label6.Text = "3";
+                        dataGridView2.DataSource = dt3;
+                    }
+                    else if (textBox3.Text == "4")
+                    {
+                        textBox3.Text = "4";
+                        label6.Text = "4";
+                        dataGridView2.DataSource = dt4;
+                    }
+                }
+            }
+        }
 
-
-
-
-
-
-
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            button8.Enabled = false;
+            button9.Enabled = false;
+            label7.Enabled = false;
+            textBox3.Enabled = false;
+            textBox4.Enabled = false;
+        }
     }
 }
