@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -177,7 +178,20 @@ namespace WindowsFormsApp2
 
 
 
-        //---------------------------  实现datagridview 分页效果  获取dataTable拆封多个table显示
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            button8.Enabled = false;
+            button9.Enabled = false;
+            label7.Enabled = false;
+            textBox3.Enabled = false;
+            textBox4.Enabled = false;
+        }
+
+
+
+
+        // tabpage2---------------------------  实现datagridview 分页效果  获取dataTable拆封多个table显示
 
         /// <summary>
         ///  查询显示数据到datagridview2 
@@ -190,11 +204,10 @@ namespace WindowsFormsApp2
         DataTable dt3 = new DataTable("c");
         DataTable dt4 = new DataTable("d");
 
-
         private void button7_Click(object sender, EventArgs e)
         {
             DataSet ds = new DataSet();
-           
+
 
 
             dt2.Columns.Add("Name");
@@ -218,10 +231,10 @@ namespace WindowsFormsApp2
             dt4.Columns.Add("CustAcct");
 
 
-            for (int i=0; i<18; i++) 
+            for (int i = 0; i < 18; i++)
             {
                 dt1.Rows.Add(new object[] { "James Bond, LLC", 120, "Garrison Neely", "1234" });
-     
+
             }
 
 
@@ -243,14 +256,14 @@ namespace WindowsFormsApp2
                 dt4.Rows.Add(new object[] { "jack", 44, "nv", "2468" });
 
             }
-            ds.Tables.Add(dt1); 
-            int count =  dt1.Rows.Count;
+            ds.Tables.Add(dt1);
+            int count = dt1.Rows.Count;
 
-           
-            
+
+
             this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;  //DataGridView自动调整列宽
             dataGridView2.DataSource = dt1;
-            if(dataGridView2.Rows!= null)
+            if (dataGridView2.Rows != null)
             {
                 textBox4.Text = "4";
                 textBox3.Text = "1";
@@ -268,9 +281,6 @@ namespace WindowsFormsApp2
             }
 
         }
-
-    
-
 
         /// <summary>
         /// 减
@@ -328,14 +338,13 @@ namespace WindowsFormsApp2
 
 
             }
-       
-        }
 
+        }
 
 
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar  == 13)
+            if (e.KeyChar == 13)
             {
 
                 if (textBox3.Text != null || textBox3.Text != "")
@@ -368,13 +377,78 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+
+
+
+
+        // tabpage3---------------------------  实现datagridview 分页效果  获取dataTable拆封多个table显示
+
+
+        string Filepath = "";
+        DataTable dt = new DataTable();
+        private void button10_Click(object sender, EventArgs e)
         {
-            button8.Enabled = false;
-            button9.Enabled = false;
-            label7.Enabled = false;
-            textBox3.Enabled = false;
-            textBox4.Enabled = false;
+
+            OpenFileDialog file = new OpenFileDialog();
+            file.ShowDialog(); //打開文件選擇對話框
+            Filepath = System.IO.Path.GetDirectoryName(file.FileName) + "\\" + file.SafeFileName; //獲取目錄信息 + 選擇的文件名和擴展名
+            this.textBox1.Text = Filepath;
+
+            dt = open_file(Filepath); //把csv文件寫入dataTable
+            this.dataGridView3.DataSource = dt;  //把寫入的DataTable數據源 賦值給datagridview
+         
         }
+
+        private static DataTable open_file(string Filepath)   //循環便利數據
+        {
+            FileStream fs = new FileStream(Filepath, FileMode.Open, FileAccess.Read);
+            StreamReader sr = new StreamReader(fs, System.Text.Encoding.Default);
+            DataTable dt = new DataTable();
+            string strLine = "";
+            //記錄每行記錄中的各字段內容
+            string[] aryLine = null;
+            string[] tableHead = null;
+            //標示列數
+            int columnCount = 2;
+            //標示是否是讀取的第一行
+            bool IsFirst = true;
+            //逐行讀取CSV中的數據
+            while ((strLine = sr.ReadLine()) != null)
+            {
+                if (IsFirst == true)
+                {
+                    tableHead = strLine.Split(',');//
+                    IsFirst = false;
+                    columnCount = tableHead.Length;
+                    //創建列
+                    for (int i = 0; i < columnCount; i++)
+                    {
+                        tableHead[i] = tableHead[i].Replace("\"", "");
+                        DataColumn dc = new DataColumn(tableHead[i]);
+                        dt.Columns.Add(dc);
+                    }
+                }
+                else
+                {
+                    aryLine = strLine.Split(',');
+                    DataRow dr = dt.NewRow();
+                    for (int j = 0; j < columnCount; j++)
+                    {
+                        dr[j] = aryLine[j].Replace("\"", "");
+                    }
+                    dt.Rows.Add(dr);
+                }
+            }    
+          
+            sr.Close();
+            fs.Close();
+            return dt;
+        }
+
+
+
+
+
+
     }
 }
