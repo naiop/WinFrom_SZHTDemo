@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp2
+namespace DataGridView_Demo
 {
     partial class Form1
     {

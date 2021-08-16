@@ -1,10 +1,10 @@
-# SZHTdemo
+# DataGridView_demo
 
 练习题
 
 语言：VS (C#)
 
-![Image](https://github.com/FYG1998/SZHTdemo/images/img.png)
+![Image](https://github.com/naiop/DataGridView_Demo/images/img.png)
 
 一 菜单使用
 1.使用 C#建立一个如下面

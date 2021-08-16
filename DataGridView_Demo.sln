@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFrom_Demo", "CSharp_WinFrom\WinFrom_Demo.csproj", "{09ECB15E-1700-4FCD-85DC-F86DD9204D51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGridView_Demo", "DataGridView_Demo\DataGridView_Demo.csproj", "{09ECB15E-1700-4FCD-85DC-F86DD9204D51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

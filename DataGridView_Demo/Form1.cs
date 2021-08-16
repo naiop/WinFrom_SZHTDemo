@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp2
+namespace DataGridView_Demo
 {
     public partial class Form1 : Form
     {
@@ -261,7 +261,7 @@ namespace WindowsFormsApp2
 
 
 
-            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;  //DataGridView自动调整列宽
+                
             dataGridView2.DataSource = dt1;
             if (dataGridView2.Rows != null)
             {
